@@ -16,7 +16,7 @@ task :setup => ["public", "public/hars"]
 # (https://github.com/jarib/har).
 file "public" do
   require "bundler/cli"
-  source = Bundler::CLI.new.send(:locate_gem, "har") + "/lib/har/viewer"
+  source = Gem::Specification.find_by_name("har").gem_dir + "/lib/har/viewer"
   FileUtils.cp_r(source, HARViewer.pathname)
 end
 
